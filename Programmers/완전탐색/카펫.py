@@ -4,4 +4,4 @@ def solution(brown, red):
             if red == (i - 2) * (j - 2) and brown + red == j*i:
                 return [j,i]
 
-# for ¹üÀ§¸¦ 2000À¸·Î ÇØ¾ßµÇ´Â ÀÌÀ¯¸¦ ºÐ¼®ÇØ¾ßÇÔlsrn
+# for ë²”ìœ„ ìˆ˜ì •

@@ -4,4 +4,4 @@ def solution(A, B):
     y = np.array(B)
     return (x*y).tolist()
 
-# np ¾È¾²°í Ç®¾îº¸±â
+# np ì•ˆì“°ê³  í’€ê¸°

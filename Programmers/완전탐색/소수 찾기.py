@@ -6,14 +6,14 @@ def solution(numbers):
 
     sosu = set(range(2,max+1)) 
     
-    # ¾Æ¸®½ºÅäÅ×³×½º Ã¼¸¦ ÀÌ¿ëÇØ ¹è¼ö¸¦ »èÁ¦
+    # ì•„ë¦¬ìŠ¤í† í…Œë„¤ìŠ¤ ì²´ë¥¼ ì´ìš©í•´ ë°°ìˆ˜ë¥¼ ì‚­ì œ
     for i in range(2,max+1) :
         if i in sosu :
             sosu -= set(range(2*i,max+1,i))
     
     sosu = list(sosu)
     
-    # ¸ğµç °¡´ÉÇÑ ¹®ÀÚ ÃßÃâ
+    # ëª¨ë“  ê°€ëŠ¥í•œ ë¬¸ì ì¶”ì¶œ
     for i in range(1,len(numbers)+1) :
         all.append(list(map(''.join, itertools.permutations(numbers,i))))
     
@@ -22,14 +22,14 @@ def solution(numbers):
 
     cnt = 0
     x = []
-    #Áßº¹ Á¦°Å¸¦ À§ÇÔ
+    #ì¤‘ë³µ ì œê±°ë¥¼ ìœ„í•¨
     for i in range(len(all)) :
         all[i] = list(set(all[i]))
         for j in range(len(all[i])) :
             x.append(all[i][j])
     x = list(set(x))
     
-    # ¼Ò¼ö ¸ñ·Ï ¾È¿¡ ÀÖÀ» °æ¿ì Ä«¿îÆ® Áõ°¡
+    # ì†Œìˆ˜ ëª©ë¡ ì•ˆì— ìˆì„ ê²½ìš° ì¹´ìš´íŠ¸ ì¦ê°€
     for i in x :
         if i in sosu :
             cnt = cnt + 1

@@ -6,4 +6,4 @@ def solution(n):
         fb = sum
     return sum % 1234567
 
-# Çò°¥¸®³×
+# í—·ê°ˆë¦¬ë„¤

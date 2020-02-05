@@ -15,8 +15,8 @@ def solution(record):
     for i in record :
         i = i.split()
         if i[0] == 'Enter' :
-            answer.append(ahash[i[1]]+'´ÔÀÌ µé¾î¿Ô½À´Ï´Ù.')
+             answer.append(ahash[i[1]]+'ë‹˜ì´ ë“¤ì–´ì™”ìŠµë‹ˆë‹¤.')
         elif i[0] == 'Leave' :
-            answer.append(ahash[i[1]]+'´ÔÀÌ ³ª°¬½À´Ï´Ù.')
+            answer.append(ahash[i[1]]+'ë‹˜ì´ ë‚˜ê°”ìŠµë‹ˆë‹¤.')
 
     return answer

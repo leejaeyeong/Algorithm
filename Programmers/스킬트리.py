@@ -5,14 +5,14 @@ def solution(skill, skill_trees):
         valid = []
         for j in range(len(skill)) :
             valid.append(i.find(skill[j]))
-        #print(i,'ÀÇ À¯È¿ÇÑ ½ºÅ³Àº',valid)
+        #print(i,'ì˜ ìœ íš¨í•œ ìŠ¤í‚¬ì€',valid)
 
         preSkill = valid[0]
         for j in range(1,len(valid)) :
             if valid[j] > preSkill :
                 preSkill = valid[j]
             else :
-                #print('¸ØÃã')
+                #print('ë©ˆì¶¤')
                 answer = answer - 1
                 break
             if preSkill == -1 and valid[j] > -1 :
