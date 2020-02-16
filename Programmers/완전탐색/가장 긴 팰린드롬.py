@@ -30,8 +30,12 @@ def checkPelindrome(s,types) :
     
 
 def solution(s):
+    x = checkPelindrome(s,'odd')
+    y = checkPelindrome(s,'even')
     if len(s) == 1 or len(s) == 0 : return 1
-    return checkPelindrome(s,'odd')*2+1 if checkPelindrome(s,'odd') > checkPelindrome(s,'even') else checkPelindrome(s,'even')*2+2
+    if x == 0 and y == 0 : return 1
+    return x*2+1 if x > y else y*2+2
+    
 
 
 # test case 
@@ -42,7 +46,9 @@ print(solution('abcxxcba'),8)
 print(solution('abccb'),4)
 print(solution('xabcdcbaxaaaaaaxxaaaaaa'),14)
 print(solution('xabcdcbax'),9)
-print(solution(''),1) 
+print(solution(''),1)
+
+print(solution('abcde'),1)
 
 
 
