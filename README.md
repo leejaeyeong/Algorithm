@@ -1,5 +1,61 @@
 # Algorithm / Data Structure  
+## Q. 큐  
+### 선형 큐  
+ - front : 저장된 첫번째 원소의 인덱스 (삭제 위치)
+ - rear : 저장된 마지막 원소의 인덱스 (삽입 위치)
+ - 초기 상태 : ```front = rear = -1```
+ - 공백 상태 : ```front = rear```
+ - 포화 상태 : ```rear = n-1``` (n은 배열의 크기, n-1은 배열의 마지막 인덱스)  
+#### 단점) 배열의 크기가 고정적, full(```rear == n-1```) 상태에서 큐에 원소가 꽉 차 있지 않는 경우가 있다. 이 경우 deQueue 연산으로 인해 생긴 공백만큼 큐의 원소를 앞으로 이동시켜야 하므로 많은 비용이 발생한다.  
+```python  
 
+class Queue() :
+    def __init__(self,n) :
+        self.queue = [None]*n
+        self.n = n
+        self.front = -1
+        self.rear = -1
+    
+    def isEmpty(self) :
+        return self.front == self.rear
+    
+    def isFull(self) :
+        return self.rear == self.n-1
+
+    def Qpeek(self) :
+        if self.isEmpty() :
+            print('empty')
+            return None
+        return self.queue[self.front+1]
+
+    def deQueue(self) :
+        if self.isEmpty() :
+            print('empty')
+            return None
+        else :
+            self.queue[self.front+1] = None
+            self.front += 1
+
+    def inQueue(self, value) :
+        if self.isFull() :
+            if self.queue[0] != None :
+                print('full')
+                return None
+            else :
+                noneCnt = self.queue.count(None)
+
+                for i in range(self.n) :
+                    if self.queue[i] != None :
+                        self.queue[i-noneCnt] = self.queue[i]
+                        self.queue[i] = None
+
+                self.front = -1
+                self.rear = -1 if self.queue.count(None) == self.n else i-noneCnt
+                    
+        self.rear += 1
+        self.queue[self.rear] = value  
+```
+ 
 ## N. 트리  
  - 차수  
    - 노드의 차수 - 노드에 연결된 자식 노드의 수  
