@@ -1,4 +1,6 @@
 # Algorithm / Data Structure  
+## S. 퀵소트  
+
 ## Q. 큐  
 ### 선형 큐  
  - front : 저장된 첫번째 원소의 인덱스 (삭제 위치)
@@ -55,7 +57,34 @@ class Queue() :
         self.rear += 1
         self.queue[self.rear] = value  
 ```
- 
+### 원형 큐  
+ - front와 rear의 위치가 배열의 마지막 인덱스인 n-1을 가리킨 후, 그 다음에는 논리적인 순환을 이루어 배열의 처음 인덱스인 0을 가리키도록 하자.
+ - mod연산을 활용
+   - front 변수 : 공백상태와 포화상태 구분을 쉽게 하기 위해 front의 자리는 항상 빈자리  
+```python  
+
+class RoundQueue() :
+    def __init__(self,n) :
+        self.queue = [None]*n
+        self.n = n
+        self.front = -1
+        self.rear = -1
+    
+    def isEmpty(self) :
+        return self.front == self.rear
+    
+    def isFull(self) :
+        return self.rear == self.n-1
+
+    def Qpeek(self) :
+        
+
+    def deQueue(self) :
+        
+
+    def inQueue(self, value) :
+        
+```
 ## N. 트리  
  - 차수  
    - 노드의 차수 - 노드에 연결된 자식 노드의 수  
