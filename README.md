@@ -61,28 +61,42 @@ class Queue() :
  - front와 rear의 위치가 배열의 마지막 인덱스인 n-1을 가리킨 후, 그 다음에는 논리적인 순환을 이루어 배열의 처음 인덱스인 0을 가리키도록 하자.
  - mod연산을 활용
    - front 변수 : 공백상태와 포화상태 구분을 쉽게 하기 위해 front의 자리는 항상 빈자리  
+ > 원형 큐의 크기가 n이라면 원형 큐에 넣을 수 있는 값의 수는 n-1개이다.  
+ > 만약 n개를 다 채울경우, front와 rear의 값이 같아져서 시작이 어디인지 문제가 발생하게 된다.
 ```python  
-
 class RoundQueue() :
     def __init__(self,n) :
         self.queue = [None]*n
         self.n = n
-        self.front = -1
-        self.rear = -1
+        self.front = 0
+        self.rear = 0
     
     def isEmpty(self) :
         return self.front == self.rear
     
     def isFull(self) :
-        return self.rear == self.n-1
+        # 원형 큐의 경우 원형을 돌아왔는데 값이 front랑 같다면 full이라고 볼 수 있다.
+        return (self.rear+1)%self.n == self.front
 
     def Qpeek(self) :
-        
+        if self.isEmpty() :
+            return None
+        return self.queue[self.front+1]
 
     def deQueue(self) :
-        
+        if self.isEmpty() :
+            return None
+        self.front = (self.front+1)%self.n
+        value = self.queue[self.front]
+        self.queue[self.front] = None
+        return value 
 
     def inQueue(self, value) :
+        if self.isFull() :
+            print('is Full')
+            return 
+        self.rear = (self.rear+1)%self.n
+        self.queue[self.rear] = value
         
 ```
 ## N. 트리  
