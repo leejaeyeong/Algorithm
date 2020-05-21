@@ -1,6 +1,27 @@
 # Algorithm / Data Structure  
 ## S. 퀵소트  
+> 주어진 배열을 두개로 분할하고, pivot을 기준으로 각각 정렬하는 과정을 반복한다.  
+> 시간복잡도 O(nlogn)  
+> 최악의 경우, O(n^2)이지만 평균적으로 가장 빠르다.  
 
+### 구현  
+ - pivot을 기준으로 pivot 보다 작은 배열과 pivot 보다 큰 배열을 찾는다.
+ - pivot을 제외한 나누어진 두 배열에 퀵소트 과정을 반복한다. 
+```python
+def quick_sort(arr) :
+    if len(arr) <= 1 : 
+        return arr
+    pivot = arr[len(arr)//2]
+    less_arr, equal_arr, big_arr = [], [], []
+    for i in arr :
+        if i < pivot :
+            less_arr.append(i)
+        elif i > pivot :
+            big_arr.append(i)
+        else :
+            equal_arr.append(i)
+    return quick_sort(less_arr) + equal_arr + quick_sort(big_arr)
+```
 ## Q. 큐  
 ### 선형 큐  
  - front : 저장된 첫번째 원소의 인덱스 (삭제 위치)
