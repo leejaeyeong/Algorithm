@@ -181,3 +181,10 @@ class BinarySearchTree(object) :
         else:
             return self.find_value(root.right, key)  
 ```  
+### 배열 회전  
+```python 
+arr = [[col + 1 for col in range(5)] for row in range(5)] # 5x5 배열 생성
+rotatedArr_90 = [[arr[i][j] for i in reversed(range(len(arr[j])))] for j in range(len(arr))] # 90도 회전
+rotatedArr_180 = [[arr[j][i] for i in reversed(range(len(arr[j])))] for j in range(len(arr))] # 180도 회전
+rotatedArr_270 = [[arr[i][j] for i in range(len(arr[j]))] for j in reversed(range(len(arr)))] # 270도 회전
+```
