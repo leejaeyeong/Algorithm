@@ -24,10 +24,10 @@ def quick_sort(arr) :
 ```
 
 ## **2. 힙소트**
- -  이진트리의 형태  
+ - 이진트리 형태  
  - 노드의 개수가 n일 때, 트리의 높이는 logn  
- - 최악의 경우, O(nlogn)으로 성능이 좋다.
- - 자식 노드의 값은 반드시 부모 노드 보다 커야한다.(**최대힙**)
+ - 최악의 경우에도 O(nlogn)으로 성능이 뛰어나다.
+ - 자식 노드의 값은 반드시 부모 노드 보다 작아야한다.(**최대힙**)
  - 루트 노드의 값을 꺼낸 경우, 오른쪽 맨 아래 노드를 루트로 가져온 후 **heapify** 과정 반복
 
 
@@ -61,6 +61,17 @@ def heap_sort(unsorted):
         unsorted[0], unsorted[i] = unsorted[i], unsorted[0]
         heapify(unsorted, 0, i)
     return unsorted
+```
+```python
+import heapq
+def heap_sort(nums):
+    heap=[]
+    for i in nums: # heap 형태로 push
+        heapq.heappush(heap,i)
+    answer=[]
+    while heap:
+        answer.append(heapq.heappop(heap)) # root node 꺼냄
+    return answer
 ```
 
 ## **3. Queue**  
