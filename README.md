@@ -1,5 +1,5 @@
 # Algorithm / Data Structure  
-## S. 퀵소트  
+## **1. 퀵소트**
 > 주어진 배열을 두개로 분할하고, pivot을 기준으로 각각 정렬하는 과정을 반복한다.  
 > 시간복잡도 O(nlogn)  
 > 최악의 경우, O(n^2)이지만 평균적으로 가장 빠르다.  
@@ -22,7 +22,48 @@ def quick_sort(arr) :
             equal_arr.append(i)
     return quick_sort(less_arr) + equal_arr + quick_sort(big_arr)
 ```
-## Q. 큐  
+
+## **2. 힙소트**
+ -  이진트리의 형태  
+ - 노드의 개수가 n일 때, 트리의 높이는 logn  
+ - 최악의 경우, O(nlogn)으로 성능이 좋다.
+ - 자식 노드의 값은 반드시 부모 노드 보다 커야한다.(**최대힙**)
+ - 루트 노드의 값을 꺼낸 경우, 오른쪽 맨 아래 노드를 루트로 가져온 후 **heapify** 과정 반복
+
+
+### 구현
+ - 정렬되지 않은 리스트를 힙 자료구조로 변환한다. 
+ - 힙의 0번째 값은 최댓값 또는 최솟값이므로(max heap or min haep) 맨 마지막 요소와 값을 교환한 후, 마지막 index를 제외하고 heapify 과정을 반복한다. 
+
+```python
+def heapify(unsorted, index, heap_size): # heap 자료구조 유지
+    largest = index
+    left_index = 2 * index + 1
+    right_index = 2 * index + 2
+    if left_index < heap_size and unsorted[left_index] > unsorted[largest]:
+        largest = left_index
+    if right_index < heap_size and unsorted[right_index] > unsorted[largest]:
+        largest = right_index
+    if largest != index:
+        unsorted[largest], unsorted[index] = unsorted[index], unsorted[largest]
+        heapify(unsorted, largest, heap_size)
+
+def heap_sort(unsorted):
+    n = len(unsorted)
+    # 인덱스 : (n을 2로 나눈 몫-1)
+    # 최초 힙 구성시 배열의 중간부터 시작하면 
+    # 이진트리 성질에 의해 모든 요소값을 
+    # 서로 한번씩 비교할 수 있게 됨 : O(n)
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(unsorted, i, n)
+
+    for i in range(n - 1, 0, -1):
+        unsorted[0], unsorted[i] = unsorted[i], unsorted[0]
+        heapify(unsorted, 0, i)
+    return unsorted
+```
+
+## **3. Queue**  
 ### 선형 큐  
  - front : 저장된 첫번째 원소의 인덱스 (삭제 위치)
  - rear : 저장된 마지막 원소의 인덱스 (삽입 위치)
@@ -120,7 +161,7 @@ class RoundQueue() :
         self.queue[self.rear] = value
         
 ```
-## N. 트리  
+## **4. 트리**  
  - 차수  
    - 노드의 차수 - 노드에 연결된 자식 노드의 수  
    - 트리의 차수 - 트리의 속한 노드의 차수 중 가장 큰 값  
