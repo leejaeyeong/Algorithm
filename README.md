@@ -62,6 +62,7 @@ def heap_sort(unsorted):
         heapify(unsorted, 0, i)
     return unsorted
 ```
+#### heapq library
 ```python
 import heapq
 def heap_sort(nums):
