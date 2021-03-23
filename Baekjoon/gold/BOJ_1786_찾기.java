@@ -1,4 +1,4 @@
-package date0323;
+﻿package date0323;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -40,7 +40,6 @@ public class BOJ_1786_찾기 {
 				}
 			}
 		}
-
 		System.out.println(cnt);
 		StringBuilder sb = new StringBuilder();
 		for (int index : list)
